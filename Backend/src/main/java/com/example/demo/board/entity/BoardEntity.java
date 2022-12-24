@@ -3,37 +3,24 @@ package com.example.demo.board.entity;
 import com.example.demo.board.dto.BoardDTO;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 // DB의 테이블 역할을 하는 클래스
-@Entity
-@Getter
+@Entity @Getter @ToString
 @Setter
-@Table(name = "board_table")
 public class BoardEntity extends BaseEntity {
     @Id // pk 컬럼 지정. 필수
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment
     private Long id;
-
-    @Column(length = 20, nullable = false) // 크기 20, not null
     private String boardWriter;
-
-    @Column // 크기 255, null 가능
     private String boardPass;
-
-    @Column
     private String boardTitle;
-
-    @Column(length = 500)
     private String boardContents;
-/// 여기 데이터 국간임 삭제해도 됨,
-    @Column
     private int boardHits;
-
-    @Column
     private int fileAttached; // 1 or 0
 
     @OneToMany(mappedBy = "boardEntity", cascade = CascadeType.REMOVE, orphanRemoval = true, fetch = FetchType.LAZY)

@@ -22,5 +22,3 @@ public class BaseEntity {
     @Column(insertable = false)
     private LocalDateTime updatedTime;
 }
-
-// 여기 작성시간 구간임 createdTime,updatedTime 없어도 됨 인자에서!
